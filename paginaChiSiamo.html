@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chi Siamo - ROBOMARS</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0a0a0a 100%);
+            color: white;
+            min-height: 100vh;
+        }
+
+        /* Menu orizzontale moderno */
+        nav {
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1.5rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 3px solid rgb(178, 34, 34);
+        }
+
+        nav .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 900;
+            color: rgb(178, 34, 34);
+            text-shadow: 0 0 20px rgba(178, 34, 34, 0.5);
+            letter-spacing: 3px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            position: relative;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: rgb(178, 34, 34);
+            transition: width 0.3s;
+        }
+
+        nav a:hover {
+            color: rgb(178, 34, 34);
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Main Content */
+        .main-content {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 2rem;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background: linear-gradient(135deg, rgba(178, 34, 34, 0.1) 0%, rgba(10, 10, 10, 0.9) 100%);
+            border-radius: 20px;
+            border: 2px solid rgba(178, 34, 34, 0.3);
+        }
+
+        .page-header h1 {
+            font-size: 3rem;
+            color: rgb(178, 34, 34);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            text-shadow: 0 0 20px rgba(178, 34, 34, 0.5);
+        }
+
+        .section {
+            background: linear-gradient(135deg, rgba(26, 26, 26, 0.95) 0%, rgba(10, 10, 10, 0.95) 100%);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(178, 34, 34, 0.3);
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            transition: all 0.3s;
+        }
+
+        .section:hover {
+            border-color: rgb(178, 34, 34);
+            box-shadow: 0 10px 30px rgba(178, 34, 34, 0.3);
+        }
+
+        .section h1 {
+            color: rgb(178, 34, 34);
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border-bottom: 2px solid rgba(178, 34, 34, 0.3);
+            padding-bottom: 0.5rem;
+        }
+
+        .section h2 {
+            color: rgb(178, 34, 34);
+            font-size: 1.8rem;
+            margin: 2rem 0 1rem 0;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .section h3 {
+            color: rgba(178, 34, 34, 0.9);
+            font-size: 1.4rem;
+            margin: 1.5rem 0 1rem 0;
+            font-style: italic;
+        }
+
+        .section p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.9);
+            text-align: justify;
+            margin-bottom: 1rem;
+        }
+
+        .section li {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.85);
+            margin: 1rem 0;
+            margin-left: 2rem;
+        }
+
+        .section li b {
+            color: rgb(178, 34, 34);
+            font-weight: 700;
+        }
+
+        .organigramma-container {
+            text-align: center;
+            margin: 2rem 0;
+            padding: 2rem;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 15px;
+            border: 2px solid rgba(178, 34, 34, 0.2);
+        }
+
+        #organigramma {
+            max-width: 100%;
+            height: auto;
+            border-radius: 15px;
+            border: 3px solid rgba(178, 34, 34, 0.3);
+            transition: all 0.3s;
+        }
+
+        #organigramma:hover {
+            border-color: rgb(178, 34, 34);
+            box-shadow: 0 10px 40px rgba(178, 34, 34, 0.4);
+            transform: scale(1.02);
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(0, 0, 0, 0.9);
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+            border-top: 3px solid rgb(178, 34, 34);
+        }
+
+        footer p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .page-header h1 { font-size: 2rem; }
+            .section h1 { font-size: 1.5rem; }
+            .section h2 { font-size: 1.3rem; }
+            nav ul { flex-direction: column; gap: 1rem; }
+            nav .container { flex-direction: column; gap: 1rem; }
+            .logo { font-size: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Menu -->
+    <nav>
+        <div class="container">
+            <div class="logo">🚀 ROBOMARS</div>
+            <ul>
+                <li><a href="robomars1.html">HOME</a></li>
+                <li><a href="paginaChiSiamo.html">Chi Siamo</a></li>
+                <li><a href="listinoprezzi.html">Servizi</a></li>
+                <li><a href="BusinessPlan.html">Business Plan</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="page-header">
+            <h1>CHI SIAMO</h1>
+        </div>
+
+        <div class="section">
+            <h1>Descrizione azienda</h1>
+            <p>Robomars nasce con una visione chiara: progettare e sviluppare rover spaziali all'avanguardia per 
+            l'esplorazione della superficie marziana. La nostra missione è superare i confini dell'ingegneria 
+            robotica e approfondire la conoscenza scientifica dello spazio grazie a tecnologie innovative. 
+            Siamo un team multidisciplinare di ingegneri, ricercatori e visionari uniti dall'obiettivo di 
+            raccogliere dati preziosi per la scienza e per le generazioni a venire. Non progettiamo semplici 
+            macchine, ma strumenti per scoprire, capire e spingersi oltre. Combinando tecnologia di ultima 
+            generazione e ingegneria di precisione, accompagniamo l'umanità verso il futuro dell'esplorazione 
+            interplanetaria.</p>
+        </div>
+
+        <div class="section">
+            <h1>Organigramma</h1>
+            <div class="organigramma-container">
+                <img id="organigramma" src="organigramma.png" alt="Organigramma Aziendale"/>
+            </div>
+
+            <h2>VERTICE AZIENDALE</h2>
+            <h3>Direzione generale</h3>
+            <li><b>PRESIDENTE: ERICA LUCA</b><br>
+                Presidente dell'azienda, che partecipa alle riunioni di presentazione dei
+                progetti con l'addetto alle vendite e si occupa della direzione del personale.</li>
+            <li><b>VICEPRESIDENTE: PAOLO RUGGERI</b><br>
+                Vicepresidente dell'azienda, responsabile del personale.</li>
+
+            <h2>UNITÀ DI LINEA</h2>    
+            <h3>Segreteria</h3>
+            <li><b>SEGRETARIA: PAOLA SAVIANO</b><br>
+                Segretaria, si occupa dell'organizzazione dell'agenda dei direttori e del
+                venditore e della gestione della clientela pre e post-vendita.</li>
+
+            <h3>Direzione amministrativa e ufficio personale</h3>
+            <li><b>RESPONSABILE AMMINISTRATIVO: SAMANTHA GRAZIOLI</b><br>
+                Responsabile amministrativo, incaricato di svolgere le funzioni di contabilità 
+                e supervisionare le attività finanziarie dell'azienda.</li>
+            <li><b>RESPONSABILE DEL PERSONALE: PAOLO RUGGERI</b><br>
+                Responsabile del personale, che si occupa della gestione delle assunzioni,
+                delle paghe e del rapporto con i dipendenti (ferie, permessi).</li>
+
+            <h3>Acquisti</h3>
+            <li><b>DIRETTRICE ACQUISTI: SAMANTHA GRAZIOLI</b><br>
+                Direttrice acquisti, responsabile degli acquisti materiali e del controllo della
+                loro sistemazione e dell'inventario.</li>
+
+            <h3>Marketing/Vendite</h3>
+            <li><b>DIRETTORE VENDITE: ALESSANDRO BONUZZI</b><br>
+                Direttore vendite, responsabile delle ricerche di mercato, del
+                coordinamento delle attività di vendita e di promozione e pubblicità.</li>
+            <li><b>ADDETTE ALLE VENDITE: DESIRÈ CARBONE, ERICA LUCA</b><br>
+                Addette alle vendite, che si occupano di presentare il prodotto agli
+                acquirenti.</li>
+
+            <h3>Ricerca e sviluppo</h3>
+            <li><b>RICERCATORI: ALESSANDRO CAVICCHIOLI, GIORGIA MASETTI, DENIS ERMICIOI</b><br>
+                Ricercatori, responsabili della ricerca e dell'innovazione tecnologica per il
+                miglioramento e lo sviluppo dei prodotti e dei processi di produzione
+                dell'azienda.</li>
+
+            <h3>Progettazione e produzione</h3>
+            <li><b>PROGETTISTI HARDWARE (INGEGNERI HARDWARE): ROBERT BUSUIOC, EMILY SCARPITTA, ALESSANDRO CAVICCHIOLI</b><br>
+                Progettisti hardware, che operano nel campo della progettazione delle
+                componenti hardware (fisiche) del progetto su cui lavora l'azienda.<br>
+                <b>Capo area: ALESSANDRO CAVICCHIOLI</b></li>
+            <li><b>PROGETTISTI SOFTWARE (INGEGNERI SOFTWARE): GIORGIA MASETTI, ANNA GIULIA ZERBINI, MATTIA GRAGNANI</b><br>
+                Progettisti software, che operano nel campo della progettazione delle
+                componenti software del prodotto proposto dall'azienda.<br>
+                <b>Capo area: GIORGIA MASETTI</b></li>
+            <li><b>PROGRAMMATORI: SOFIA CRESTALE, CHIARA BORTOLOTTI, DENIS ERMICIOI</b><br>
+                Programmatori, responsabili dello sviluppo dei software progettati dagli
+                ingegneri per la realizzazione concreta del progetto.<br>
+                <b>Capo area: DENIS ERMICIOI</b></li>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>Azienda Robomars © 2026 - Esplorando il futuro dell'umanità</p>
+    </footer>
+</body>
+</html>
